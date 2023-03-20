@@ -1,0 +1,54 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="my-form">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="nome" minlength="5" maxlength="50" required>
+        <mat-hint align="end">{{ myForm.get('nome')?.value.length || 0 }}/50</mat-hint>
+        <mat-error *ngIf="myForm.controls['nome'].invalid">O nome deve ter entre 5 e 50 caracteres.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput placeholder="CEP" formControlName="cep" required (blur)="onCepBlur()">
+        <mat-error *ngIf="myForm.controls['cep'].invalid">O CEP é obrigatório e deve conter somente números.</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <mat-form-field>
+        <input matInput placeholder="Cidade" formControlName="cidade" required>
+        <mat-error *ngIf="myForm.controls['cidade'].invalid">A cidade é obrigatória.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-4">
+      <mat-form-field>
+        <input matInput placeholder="Bairro" formControlName="bairro" required>
+        <mat-error *ngIf="myForm.controls['bairro'].invalid">O bairro é obrigatório.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-4">
+      <mat-form-field>
+        <input matInput placeholder="Logradouro" formControlName="logradouro" required>
+        <mat-error *ngIf="myForm.controls['logradouro'].invalid">O logradouro é obrigatório.</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput placeholder="Número" formControlName="numero" required>
+        <mat-error *ngIf="myForm.controls['numero'].invalid">O número é obrigatório.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput placeholder="Complemento" formControlName="complemento">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">Enviar</button>
+</form>
